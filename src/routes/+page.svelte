@@ -69,6 +69,7 @@
 
 {#if screenMode === ScreenMode.FORM}
   <section>
+    <h2>Frontend Test</h2>
     <form novalidate on:submit|preventDefault={handleSubmit}>
       <Select
         bind:value={selectedCountry.id}
@@ -93,6 +94,7 @@
 
 {#if screenMode === ScreenMode.SELECTED_INPUTS}
   <section>
+    <h2>Selected Address</h2>
     <p><strong>Country: </strong>{selectedCountry.name}</p>
     <p><strong>State: </strong>{selectedState.name}</p>
 
@@ -103,11 +105,12 @@
 <style>
   section {
     margin-top: 3rem;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 560px;
   }
 
   form {
-    width: 100%;
-    max-width: 560px;
     padding: 1.25rem;
     border: 1px solid #56bfddca;
     border-radius: 6px;
