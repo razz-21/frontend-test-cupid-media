@@ -67,52 +67,105 @@
   }
 </script>
 
-{#if screenMode === ScreenMode.FORM}
-  <section>
-    <h2>Frontend Test</h2>
-    <form novalidate on:submit|preventDefault={handleSubmit}>
-      <Select
-        bind:value={selectedCountry.id}
-        items={countriesItems}
-        label="Country"
-        placeholder="Select country"
-        on:change={handleSelectCountryChange}
-      />
-      <Select
-        bind:value={selectedState.id}
-        items={statesItems}
-        disabled={statesItems.length === 0}
-        label="State"
-        placeholder="Select state"
-        on:change={handleSelectStateChange}
-      />
-
-      <Button disabled={selectedCountry.id === '' || selectedState.id === ''} label="Submit" type="submit"/>
-    </form>
-  </section>
-{/if}
-
-{#if screenMode === ScreenMode.SELECTED_INPUTS}
-  <section>
-    <h2>Selected Address</h2>
-    <p><strong>Country: </strong>{selectedCountry.name}</p>
-    <p><strong>State: </strong>{selectedState.name}</p>
-
-    <Button label="Back" type="button" on:click={handleBackToFrom} />
-  </section>
-{/if}
+<div class="page-container">
+  <div class="sections">
+    <div class="image-asset">
+      {#if screenMode === ScreenMode.FORM}
+      <img src="/images/undraw-form.svg" alt="Person Form">
+      {:else}
+        <img src="/images/undraw-details.svg" alt="Person Details">
+      {/if}
+    </div>
+    <div class="form-section">
+      {#if screenMode === ScreenMode.FORM}
+        <section>
+          <h2 class="title-text">Frontend Test (Cupid Media)</h2>
+          <form novalidate on:submit|preventDefault={handleSubmit}>
+            <Select
+              bind:value={selectedCountry.id}
+              items={countriesItems}
+              label="Country"
+              placeholder="Select country"
+              on:change={handleSelectCountryChange}
+            />
+            <Select
+              bind:value={selectedState.id}
+              items={statesItems}
+              disabled={statesItems.length === 0}
+              label="State"
+              placeholder="Select state"
+              on:change={handleSelectStateChange}
+            />
+      
+            <Button disabled={selectedCountry.id === '' || selectedState.id === ''} label="Submit" type="submit"/>
+          </form>
+        </section>
+      {/if}
+      
+      {#if screenMode === ScreenMode.SELECTED_INPUTS}
+        <section>
+          <h2 class="title-text">Selected Address</h2>
+          <p>You selected the following address:</p>
+          <p><strong>Country: </strong>{selectedCountry.name}</p>
+          <p><strong>State: </strong>{selectedState.name}</p>
+      
+          <Button label="Back" type="button" on:click={handleBackToFrom} />
+        </section>
+      {/if}
+    </div>
+  </div>
+</div>
 
 <style>
-  section {
-    margin-top: 3rem;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 560px;
+  .page-container {
+    display: grid;
+    place-items: center;
+    height: 92vh;
   }
 
-  form {
-    padding: 1.25rem;
-    border: 1px solid #56bfddca;
+  .sections {
+    display: flex;
+    align-items: center;
+    column-gap: 5rem;
+  }
+
+  .image-asset,
+  .form-section {
+    flex: 1;
+  }
+
+  .image-asset > img {
+    height: 22rem;
+    width: auto;
+  }
+
+  .title-text {
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+
+  section {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 1.75rem;
+    border: 1px solid #edf1f4;
     border-radius: 6px;
+    box-shadow: 0px 3px 6px #0000001A;
+  }
+
+  @media (max-width: 467px) {
+    .page-container {
+      place-items: baseline;
+    }
+
+    .sections {
+      flex-direction: column;
+      row-gap: 2rem;
+    }
+
+    .image-asset > img {
+      height: 10rem;
+    }
   }
 </style>

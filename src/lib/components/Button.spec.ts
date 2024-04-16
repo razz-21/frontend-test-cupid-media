@@ -25,4 +25,12 @@ describe("Button Component", () => {
     const buttonEl = component.container.querySelector('button');
     expect(buttonEl?.disabled).toBeTruthy();
   });
+
+  it("should button has 'block' class if prop is true", () => {
+    const block = true;
+    const component = render(Button, { props: { block } });
+
+    const buttonEl = component.container.querySelector('button');
+    expect(buttonEl?.classList.contains('block')).toBeTruthy();
+  })
 });

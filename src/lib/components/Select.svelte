@@ -28,7 +28,7 @@
 <style>
   .select-wrapper {
     --select-bg-color: #fff;
-    --select-border-color: #c1c1c1;
+    --select-border-color: #edf1f4;
     --select-max-width: 100%;
 
     position: relative;
@@ -39,7 +39,7 @@
 
   select {
     font-size: 1rem;
-    padding: 0.5rem 2rem 0.5rem 0.5rem;
+    padding: 0.75rem 2rem 0.75rem 0.75rem;
     width: 100%;
     min-width: 6rem;
     max-width: var(--select-max-width, 100%);
@@ -47,23 +47,31 @@
     border-color: var(--select-border-color);
     border-width: 1px;
     border-radius: 6px;
+    font-size: 14px;
     appearance: none;
     transition: border-color 300ms ease-out;
   }
 
   select:focus,
   select:hover {
-    --select-border-color: #8eddf9;
+    --select-border-color: var(--primary-100);
+  }
+
+  select[value=""] {
+    color: red;
   }
 
   select:disabled,
   select:disabled ~ .caret {
     opacity: 0.3;
+    pointer-events: none;
   }
 
   label {
     display: block;
     margin-bottom: 0.5rem;
+    font-size: 14px;
+    font-weight: 600;
   }
 
   .caret {
@@ -73,5 +81,9 @@
     right: 0.5rem;
     top: 50%;
     transform: translateY(-50%);
+  }
+
+  option:disabled {
+    color: red;
   }
 </style>
