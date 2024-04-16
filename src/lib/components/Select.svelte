@@ -11,11 +11,12 @@
   export let items: SelectItem[] = [];
   export let placeholder = 'Select state';
   export let value = '';
+  export let disabled = false;
 </script>
 
 <label for={id}>{label}</label>
 <div class="select-wrapper">
-  <select bind:value {id} {placeholder} on:change>
+  <select bind:value {id} {placeholder} {disabled} on:change>
     <option value="" disabled selected>{placeholder}</option>
     {#each items as item}
       <option value={item.id}>{item.value}</option>
@@ -53,6 +54,11 @@
   select:focus,
   select:hover {
     --select-border-color: #8eddf9;
+  }
+
+  select:disabled,
+  select:disabled ~ .caret {
+    opacity: 0.3;
   }
 
   label {

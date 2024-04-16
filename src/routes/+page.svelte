@@ -46,6 +46,7 @@
   async function handleSelectCountryChange(): Promise<void> {
     try {
       selectedState = {...DEFAULT_SELECTED_VALUE};
+      statesItems = [];
       selectedCountry.name = countriesItems.find((country) => country.id === +selectedCountry.id)?.value ?? '';
       await getCountryStates(+selectedCountry.id);
     } catch (e) {
@@ -69,8 +70,21 @@
 {#if screenMode === ScreenMode.FORM}
   <section>
     <form novalidate on:submit|preventDefault={handleSubmit}>
-      <Select items={countriesItems} bind:value={selectedCountry.id} label="Country" placeholder="Select country" on:change={handleSelectCountryChange} />
-      <Select items={statesItems} bind:value={selectedState.id} label="State" placeholder="Select state" on:change={handleSelectStateChange} />
+      <Select
+        bind:value={selectedCountry.id}
+        items={countriesItems}
+        label="Country"
+        placeholder="Select country"
+        on:change={handleSelectCountryChange}
+      />
+      <Select
+        bind:value={selectedState.id}
+        items={statesItems}
+        disabled={statesItems.length === 0}
+        label="State"
+        placeholder="Select state"
+        on:change={handleSelectStateChange}
+      />
 
       <Button disabled={selectedCountry.id === '' || selectedState.id === ''} label="Submit" type="submit"/>
     </form>

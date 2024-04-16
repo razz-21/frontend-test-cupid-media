@@ -53,4 +53,12 @@ describe("Select Component", () => {
     await fireEvent.select(selectEl as Element, {target: { value: selectedItem.id } });
     expect(selectedItem.id.toString()).eq(selectEl?.value);
   });
+
+  it("should disabled select if property is true", () => {
+    const disabled = true;
+    const component = render(Select, { props: { disabled } });
+    const selectEl = component.container.querySelector(`select`);
+
+    expect(selectEl?.disabled).toBeTruthy();
+  })
 });
