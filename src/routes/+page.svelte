@@ -23,11 +23,6 @@
   let selectedCountry = {...DEFAULT_SELECTED_VALUE};
   let selectedState = {...DEFAULT_SELECTED_VALUE};
 
-  $: {
-    console.log(selectedCountry);
-    console.log(selectedState);
-  }
-
   onMount(async () => {
     await getCountries();
   });
@@ -77,7 +72,7 @@
       <Select items={countriesItems} bind:value={selectedCountry.id} label="Country" placeholder="Select country" on:change={handleSelectCountryChange} />
       <Select items={statesItems} bind:value={selectedState.id} label="State" placeholder="Select state" on:change={handleSelectStateChange} />
 
-      <Button label="Submit" type="submit"/>
+      <Button disabled={selectedCountry.id === '' || selectedState.id === ''} label="Submit" type="submit"/>
     </form>
   </section>
 {/if}
