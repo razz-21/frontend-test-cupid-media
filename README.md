@@ -1,38 +1,19 @@
-# create-svelte
+# Frontend Test for Cupid Media
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+Application that will input country and state select field. When selecting the country, should state API much be called and display its options.
+Requirements: [Frontend Test](https://docs.google.com/document/d/1VktvxWIyUKKbu_VHmSPux4PA22sVHARlAQIaaOjReiA/edit)
 
-## Creating a project
+## Run in Local
 
-If you're seeing this, you've probably already done this step. Congrats!
+Steps:
+1. Clone the repository.
+2. Run `npm install`.
+3. Run `npm run dev` to run it on your local.
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Unit Testing
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+To run unit on each components, just run the command `npm run test:unit`.
 
-## Developing
+## Demo
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+Visit this link to see the demo.
