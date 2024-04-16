@@ -71,7 +71,7 @@
   <div class="sections">
     <div class="image-asset">
       {#if screenMode === ScreenMode.FORM}
-      <img src="/images/undraw-form.svg" alt="Person Form">
+        <img src="/images/undraw-form.svg" alt="Person Form">
       {:else}
         <img src="/images/undraw-details.svg" alt="Person Details">
       {/if}
@@ -126,7 +126,6 @@
   .sections {
     display: flex;
     align-items: center;
-    column-gap: 5rem;
   }
 
   .image-asset,
@@ -135,8 +134,9 @@
   }
 
   .image-asset > img {
-    height: 22rem;
+    height: 18rem;
     width: auto;
+    margin-right: 5rem;
   }
 
   .title-text {
@@ -166,6 +166,7 @@
 
     .image-asset > img {
       height: 10rem;
+      margin-right: 0;
     }
   }
 </style>
