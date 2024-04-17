@@ -8,6 +8,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import { requestFetch } from "$api/request-fetch";
+  import { fade, fly } from "svelte/transition";
   import Button from "$lib/components/Button.svelte";
   import Select, { type SelectItem } from "$lib/components/Select.svelte";
 
@@ -71,14 +72,14 @@
   <div class="sections">
     <div class="image-asset">
       {#if screenMode === ScreenMode.FORM}
-        <img src="/images/undraw-form.svg" alt="Person Form">
+        <img in:fade={{duration: 1000}} src="/images/undraw-form.svg" alt="Person Form">
       {:else}
-        <img src="/images/undraw-details.svg" alt="Person Details">
+        <img in:fade={{duration: 1000}} src="/images/undraw-details.svg" alt="Person Details">
       {/if}
     </div>
     <div class="form-section">
       {#if screenMode === ScreenMode.FORM}
-        <section>
+        <section in:fly={{ duration: 1000, y: -100}}>
           <h2 class="title-text">Frontend Test (Cupid Media)</h2>
           <form novalidate on:submit|preventDefault={handleSubmit}>
             <Select
@@ -103,7 +104,7 @@
       {/if}
       
       {#if screenMode === ScreenMode.SELECTED_INPUTS}
-        <section>
+        <section in:fly={{ duration: 1000, y: -100}}>
           <h2 class="title-text">Selected Address</h2>
           <p>You selected the following address:</p>
           <p><strong>Country: </strong>{selectedCountry.name}</p>
