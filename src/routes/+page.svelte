@@ -136,7 +136,7 @@
 
   .image-asset > img {
     height: 18rem;
-    width: auto;
+    width: 20rem;
     margin-right: 5rem;
   }
 
@@ -166,6 +166,7 @@
     }
 
     .image-asset > img {
+      width: auto;
       height: 10rem;
       margin-right: 0;
     }
